@@ -1,0 +1,153 @@
+
+.container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #aa1a1a; 
+    border: 1px solid #dcdcdc; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .customer-details {
+    background-color: #202020;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dcdcdc;
+  }
+
+  .customer-details h1 {
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .customer-details p {
+    margin-top: 10px;
+    color: white;
+  }
+  
+  .dropdowns {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 20px;
+  }
+
+  .failure-reasons-heading {
+    color: black;
+    font-size: 16px;
+  }
+  
+  .grid-item {
+    background-color: white;
+    border-color: #cf4242;
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .grid-item:hover {
+    background-color: #acacac;
+  }
+  
+  .status-true {
+    border-color: #2ecc71;
+  }
+
+  .status-true:hover {
+    background-color: #ffffff;
+    cursor: default;
+  }
+  
+  .checkmark {
+    color: #2ecc71;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .additional-info {
+    order: 3;
+    padding: 20px;
+    background-color: #dfdfdf; 
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .additional-info button{
+    background-color: #5d96bc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .additional-info button:hover {
+    background-color: #007acc; 
+  }
+
+  
+  .success-text {
+    color: #2ecc71;
+  }
+
+  .custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    max-width: 600px; 
+    background-color: rgb(255, 255, 132);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
+  }
+  
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+  }
+  
+  .modal-content {
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  .modal-content button {
+    background-color: #797979;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .modal-content button:hover {
+    background-color: #c70000;
+  }
+  

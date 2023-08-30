@@ -1,32 +1,51 @@
 import React, { useState } from 'react';
 import { withTaskContext } from '@twilio/flex-ui';
-import './styles.css'; 
+import './sampleStyles.css'; 
 import { Theme } from '@twilio-paste/core/theme';
 import SampleModal from './SampleModal';
+import axios from 'axios';
 
 const Sample = (props) => {
 
   const jsonData = props?.task?.attributes?.failureData;
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedReason, setSelectedReason] = useState('');
+  const [selectedDescription, setSelectedDescription] = useState('');
 
-  const openModal = (reason) => {
+  const openModal = (description) => {
     setModalIsOpen(true);
-    setSelectedReason(reason);
+    setSelectedDescription(description);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setSelectedReason('');
+    setSelectedDescription('');
   };
 
+  const [jiraTicketResponse, setJiraTicketResponse] = useState(null);
+
+  const createJiraTicket = () => {
+    axios
+      .post('https://ashish-5111.twil.io/jiraticket')
+      .then((response) => {
+        console.log('Jira ticket created:', response.data);
+        setJiraTicketResponse(response.data);
+      })
+      .catch((error) => {
+        console.error('Error creating Jira ticket:', error);
+        setJiraTicketResponse('Error creating Jira ticket');
+      });
+  };
+
+  const allStatusesTrue = jsonData && jsonData.failures.every(failure => failure.status === 'true');
+
   return (
-      <Theme.Provider theme="default">
-        {jsonData && (
-        <><div className="container">
+    <Theme.Provider theme="default">
+      {jsonData && (
+        <div className="container">
           <div className="customer-details">
             <h1>Customer Details</h1>
-            <p>{props?.task?.attributes?.customerName}</p>
+            <p>{props?.task?.attributes?.CustomerData?.Customer[0]?.fullname}</p>
+            <p>{props?.task?.attributes?.CustomerData?.Customer[0]?.emailaddress}</p>
             <p>{props?.task?.attributes?.cardType}</p>
           </div>
           <div className="dropdowns">
@@ -34,17 +53,17 @@ const Sample = (props) => {
             <div className="grid-container">
               {jsonData.failures.map((failure, index) => (
                 <div
-                  className={`grid-item ${failure.status === 'false' ? 'status-false' : ''}`}
+                  className={`grid-item ${failure.status === 'true' ? 'status-true' : ''}`}
                   key={index}
                   onClick={() => {
-                    if (failure.status !== 'false') {
-                      openModal(failure.reason);
+                    if (failure.status !== 'true') {
+                      openModal(failure.description);
                     }
-                  } }
+                  }}
                 >
                   <div><strong>Reason:</strong> {failure.reason}</div>
                   <div><strong>Status:</strong> {failure.status}</div>
-                  {failure.status === 'false' && (
+                  {failure.status === 'true' && (
                     <div className="checkmark">&#10003;</div>
                   )}
                 </div>
@@ -52,17 +71,33 @@ const Sample = (props) => {
             </div>
           </div>
           <div className="additional-info">
-            <p>
-              If all the above reasons pass, ask the customer to make sure if they had made the transaction
-              or ask customer to please call back again later as we havent received data from POS.
-            </p>
-          </div>
-        </div><SampleModal
-            isOpen={modalIsOpen}
-            onClose={closeModal}
-            text={`Reason: ${selectedReason}`} /></>
-        )}
-      </Theme.Provider>
+              <p>
+                Clicking on the failed reason will give you recommendations to solve the issue.
+              </p>
+            </div>
+          {allStatusesTrue && (
+            <div className="additional-info">
+              <p>
+                If all the above reasons pass, make sure with the customer if he/she had made the transaction
+                and create a ticket.
+              </p>
+              <div style={{ marginTop: '10px' }} />
+              <button onClick={createJiraTicket}>Submit a ticket</button>
+              <div style={{ marginTop: '10px' }} />
+              {jiraTicketResponse && (
+                <p style={{ color: 'green' }}>{jiraTicketResponse}</p>
+              )}
+            </div>
+          )}
+
+        </div>
+      )}
+      <SampleModal
+        isOpen={modalIsOpen}
+        onClose={closeModal}
+        text={`${selectedDescription}`}
+      />
+    </Theme.Provider>
     );
   };
 

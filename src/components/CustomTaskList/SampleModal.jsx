@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './styles.css'; // Make sure to adjust the path to your CSS file
+import './sampleStyles.css'
 
 const SampleModal = ({ isOpen, onClose, text }) => {
   return (
@@ -8,8 +8,8 @@ const SampleModal = ({ isOpen, onClose, text }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Failure Reason"
-      className="custom-modal" // Apply any additional styling needed
-      overlayClassName="modal-overlay" // Apply styling for the modal overlay
+      className="custom-modal"
+      overlayClassName="modal-overlay"
     >
       <div className="modal-content">
         <div>{text}</div>

@@ -6,7 +6,7 @@
   align-items: center;
   height: 100%;
   padding: 55px;
-  background-color: #727272; /* White */
+  background-color: #aa1a1a; /* White */
   border: 1px solid #dcdcdc; /* Light grey border */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -17,7 +17,7 @@
   order: 1;
   flex: 1;
   padding: 20px;
-  background-color: #dfdfdf; /* Light red */
+  background-color: #333333; /* Light red */
   border: 1px solid #dcdcdc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -29,10 +29,12 @@
 .customer-details h1 {
   margin-bottom: 25px;
   font-size: 20px;
+  color: white;
 }
 
 .customer-details p {
   margin-top: 10px;
+  color: white;
 }
 
 /* Dropdowns styles */
@@ -40,7 +42,7 @@
   order: 2;
   flex: 1;
   padding: 20px;
-  background-color: #dfdfdf;
+  background-color: #333333;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -51,35 +53,35 @@
 .grid-container {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
 }
 
 /* Grid item styles */
 .grid-item {
   padding: 15px;
-  background-color: #fff;
+  background-color: #9f3434;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   font-size: 16px;
 }
 
-.grid-item.status-false {
-  background-color: #91c39c; /* Light green */
+.grid-item.status-true {
+  background-color: #347f4c; /* Light green */
 }
 
 .grid-item strong {
-  color: #000000; /* Darker red */
+  color: #ffffff; /* Darker red */
 }
 
 /* Failure status styles */
 .grid-item div {
-  color: #333; /* Black */
+  color: #ffffff; /* Black */
 }
 
 .failure-reasons-heading {
-  color: black;
+  color: white;
   font-size: 18px; /* Increase font size */
 }
 
@@ -95,6 +97,15 @@
   margin-top: 20px;
 }
 
+.additional-info button{
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 .custom-modal {
   position: fixed;
   top: 50%;
@@ -102,7 +113,7 @@
   transform: translate(-50%, -50%);
   width: 80%; /* Adjust the width as needed */
   max-width: 600px; /* Limit the maximum width */
-  background-color: rgb(225, 231, 122);
+  background-color: rgb(255, 255, 132);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000; /* Adjust the z-index as needed */
